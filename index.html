@@ -348,9 +348,7 @@ fieldset[disabled] input,fieldset[disabled] select{background:var(--mist);color:
         <h3>Shop</h3>
         <ul>
           <li><a href="#/shop" class="ulink">All prints</a></li>
-          <li><a href="#/shop?s=70s" class="ulink">70s</a></li>
-          <li><a href="#/shop?s=80s" class="ulink">80s</a></li>
-          <li><a href="#/shop?s=90s" class="ulink">90s</a></li>
+          <li><a href="#/about" class="ulink">About the artist</a></li>
         </ul>
       </div>
       <div>
@@ -430,36 +428,102 @@ fieldset[disabled] input,fieldset[disabled] select{background:var(--mist);color:
 
 <script>
 /* ===== Settings ===== */
-const CHECKOUT_ENABLED = false;          // Switch to true once a provider is connected
-const CURRENCY = '£';
+const CHECKOUT_ENABLED = false;   // Change to true to send the cart to Shopify's checkout
 const SITE = 'Los-talgia';
 const LOGO = 'data:image/png;base64,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';
+const SHOPIFY_DOMAIN = 'lovable-project-4s2r0.myshopify.com';
+const SHOPIFY_TOKEN = '5fad55e82c12edd19a61e036d530cd19';
+const SHOPIFY_API = '2025-07';
 const INSTAGRAM_HANDLE = '@lostalgia';   // [your handle]
 const INSTAGRAM_URL = 'https://instagram.com/[your-handle]';
 const ANNOUNCEMENTS = ['Free UK delivery on all orders', 'Limited editions, printed to order', '[Third message]'];
+const FRAME_DETAILS = '[Frame details, for example moulding size, glazing and backing.]';
+const DELIVERY_TEXT = '[Delivery times and costs, and the returns policy in a sentence or two.]';
 
-const SIZES = [{ id: 'a2', label: 'A2 (42 x 60cm)' }];
-const FRAMES = [
-  { id: 'unframed', label: 'Unframed', add: 0 },
-  { id: 'white', label: 'White frame', add: 100 },
-  { id: 'black', label: 'Black frame', add: 100 }
-];
+/* Backup list, only used if Shopify can't be reached */
+const CDN = 'https://cdn.shopify.com/s/files/1/0761/7249/2857/files/';
+const FALLBACK = [
+  ['aim-of-the-game', 'Aim of the Game', 'product-aim-of-the-game.jpeg?v=1763647251'],
+  ['aim-summer-holiday', 'Aim Summer Holiday', 'product-aim-summer-holiday.jpeg?v=1763647943'],
+  ['playground-chaos-i', 'Playground Chaos I', 'product-playground-chaos-i.jpeg?v=1763648454'],
+  ['playground-chaos-ii', 'Playground Chaos II', 'product-playground-chaos-ii.jpeg?v=1763648618'],
+  ['soft-play', 'Soft Play', 'product-soft-play.jpeg?v=1763648686'],
+  ['hard-play', 'Hard Play', 'product-hard-play.jpeg?v=1763648940'],
+  ['mixtape-red-edition', 'Mixtape Red Edition', 'product-mixtape-red-edition.png?v=1763649095'],
+  ['peace-by-piece', 'Peace by Piece', 'product-peace-by-piece.jpeg?v=1763649157'],
+  ['balance-of-power', 'Balance of Power', 'product-balance-of-power.jpeg?v=1763649199']
+].map(([handle, title, file]) => ({
+  handle, title, description: '', type: '', tags: [], images: [CDN + file], options: [],
+  variants: [{ id: null, title: 'Default Title', price: null, available: false, options: {} }]
+}));
 
-/* Images go in /images named [id]-1.jpg (print), [id]-2.jpg (framed), [id]-3.jpg (detail) */
-const PRODUCTS = [
-  { id: 'lost-001', slug: 'print-one',   title: '[Print title one]',   series: '80s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Two or three sentences about this print, the toy behind it and the memory it brings back.]' },
-  { id: 'lost-002', slug: 'print-two',   title: '[Print title two]',   series: '80s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-003', slug: 'print-three', title: '[Print title three]', series: '90s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-004', slug: 'print-four',  title: '[Print title four]',  series: '90s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-005', slug: 'print-five',  title: '[Print title five]',  series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-006', slug: 'print-six',   title: '[Print title six]',   series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-007', slug: 'print-seven', title: '[Print title seven]', series: '80s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
-  { id: 'lost-008', slug: 'print-eight', title: '[Print title eight]', series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' }
-];
+let PRODUCTS = [];
+let CURRENCY_CODE = 'GBP';
 
-const SERIES_STORY = '[A short paragraph about the series: the decade, the toys it draws on and what ties the prints together.]';
-const FRAME_DETAILS = '[Frame details, for example moulding size, glazing and backing. Unframed prints are posted rolled in a tube.]';
-const DELIVERY_TEXT = '[Delivery times and costs. Estimated delivery [x] to [y] working days.]';
+/* ===== Shopify ===== */
+const PRODUCTS_QUERY = `query Products($first: Int!) {
+  products(first: $first) {
+    edges { node {
+      title handle description productType tags
+      images(first: 10) { edges { node { url altText } } }
+      options { name values }
+      variants(first: 50) { edges { node {
+        id title availableForSale
+        price { amount currencyCode }
+        selectedOptions { name value }
+      } } }
+    } }
+  }
+}`;
+
+const CART_CREATE = `mutation CartCreate($lines: [CartLineInput!]!) {
+  cartCreate(input: { lines: $lines }) {
+    cart { checkoutUrl }
+    userErrors { message }
+  }
+}`;
+
+async function shopify(query, variables = {}) {
+  const res = await fetch(`https://${SHOPIFY_DOMAIN}/api/${SHOPIFY_API}/graphql.json`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-Shopify-Storefront-Access-Token': SHOPIFY_TOKEN },
+    body: JSON.stringify({ query, variables })
+  });
+  if (!res.ok) throw new Error('Shopify responded with ' + res.status);
+  const json = await res.json();
+  if (json.errors) throw new Error(json.errors[0].message);
+  return json.data;
+}
+
+function mapProduct(n) {
+  const variants = n.variants.edges.map(({ node: v }) => ({
+    id: v.id,
+    title: v.title,
+    price: Number(v.price.amount),
+    currency: v.price.currencyCode,
+    available: v.availableForSale,
+    options: Object.fromEntries(v.selectedOptions.map(o => [o.name, o.value]))
+  }));
+  const options = (n.options || []).filter(o => !(o.values.length === 1 && o.values[0] === 'Default Title'));
+  return {
+    handle: n.handle,
+    title: n.title,
+    description: n.description || '',
+    type: n.productType || '',
+    tags: n.tags || [],
+    images: n.images.edges.map(e => e.node.url),
+    options,
+    variants
+  };
+}
+
+async function loadShopify() {
+  const data = await shopify(PRODUCTS_QUERY, { first: 100 });
+  const list = data.products.edges.map(e => mapProduct(e.node));
+  const firstVariant = list.find(p => p.variants.length) ;
+  if (firstVariant) CURRENCY_CODE = firstVariant.variants[0].currency || CURRENCY_CODE;
+  return list;
+}
 
 /* ===== Icons ===== */
 const ICONS = {
@@ -477,17 +541,22 @@ const ICONS = {
 /* ===== Helpers ===== */
 const $ = (s, el = document) => el.querySelector(s);
 const $$ = (s, el = document) => [...el.querySelectorAll(s)];
-const money = n => CURRENCY + n.toFixed(2);
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
-const byId = id => PRODUCTS.find(p => p.id === id);
-const bySlug = s => PRODUCTS.find(p => p.slug === s);
-const frameById = id => FRAMES.find(f => f.id === id);
-const sizeById = id => SIZES.find(s => s.id === id);
-const unitPrice = (p, frameId) => p.price + frameById(frameId).add;
-const imgSrc = (p, n) => `images/${p.id}-${n}.jpg`;
-const img = (src, alt, cls = '', eager = false) =>
-  `<img class="${cls}" src="${src}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} onerror="this.remove()">`;
-const ph = label => `<span class="ph">${esc(label)}<br>Image placeholder</span>`;
+const money = n => n == null ? 'Price coming soon' : new Intl.NumberFormat('en-GB', { style: 'currency', currency: CURRENCY_CODE }).format(n);
+const byHandle = h => PRODUCTS.find(p => p.handle === h);
+const variantOf = (p, id) => p ? p.variants.find(v => v.id === id) : null;
+const variantLabel = v => v && v.title !== 'Default Title' ? v.title : '';
+const sized = (url, w) => url ? url + (url.includes('?') ? '&' : '?') + 'width=' + w : '';
+const img = (src, alt, cls = '', eager = false) => src
+  ? `<img class="${cls}" src="${src}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} onerror="this.remove()">`
+  : '';
+const ph = label => `<span class="ph">${esc(label)}</span>`;
+
+function priceLabel(p) {
+  const prices = [...new Set(p.variants.map(v => v.price).filter(x => x != null))];
+  if (!prices.length) return money(null);
+  return (prices.length > 1 ? 'From ' : '') + money(Math.min(...prices));
+}
 
 function fillIcons(root = document) {
   $$('[data-icon]', root).forEach(el => { el.innerHTML = ICONS[el.dataset.icon]; });
@@ -495,26 +564,29 @@ function fillIcons(root = document) {
 }
 
 /* ===== Cart ===== */
-const CART_KEY = 'lostalgia-cart';
+const CART_KEY = 'lostalgia-cart-v2';
 let cart = loadCart();
 
 function loadCart() {
   try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { return []; }
 }
 function saveCart() {
-  cart = cart.filter(l => byId(l.id));
+  if (PRODUCTS.length) cart = cart.filter(l => variantOf(byHandle(l.handle), l.key));
   try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {}
   updateCount();
   renderCart();
 }
 const cartQty = () => cart.reduce((n, l) => n + l.qty, 0);
-const subtotal = () => cart.reduce((n, l) => n + unitPrice(byId(l.id), l.frame) * l.qty, 0);
+const subtotal = () => cart.reduce((n, l) => {
+  const v = variantOf(byHandle(l.handle), l.key);
+  return n + (v && v.price ? v.price * l.qty : 0);
+}, 0);
 
-function addToCart(id, size, frame, qty) {
-  const key = `${id}|${size}|${frame}`;
-  const line = cart.find(l => l.key === key);
+function addToCart(p, v, qty) {
+  if (!v || !v.id || !v.available) return;
+  const line = cart.find(l => l.key === v.id);
   if (line) line.qty = Math.min(10, line.qty + qty);
-  else cart.push({ key, id, size, frame, qty });
+  else cart.push({ key: v.id, handle: p.handle, qty });
   saveCart();
   $$('.count').forEach(c => { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); });
   toast('Added to cart');
@@ -527,25 +599,25 @@ function updateCount() {
 }
 
 function lineHTML(l, compact = false) {
-  const p = byId(l.id);
-  const f = frameById(l.frame), s = sizeById(l.size);
+  const p = byHandle(l.handle), v = variantOf(p, l.key);
+  if (!p || !v) return '';
   const controls = compact ? `<p class="small muted">Qty ${l.qty}</p>` : `
     <div class="line-row">
       <div class="qty sm">
-        <button data-dec="${l.key}" aria-label="Decrease quantity">&minus;</button>
+        <button data-dec="${esc(l.key)}" aria-label="Decrease quantity">&minus;</button>
         <span>${l.qty}</span>
-        <button data-inc="${l.key}" aria-label="Increase quantity">+</button>
+        <button data-inc="${esc(l.key)}" aria-label="Increase quantity">+</button>
       </div>
-      <button class="ulink small" data-remove="${l.key}">Remove</button>
+      <button class="ulink small" data-remove="${esc(l.key)}">Remove</button>
     </div>`;
   return `<div class="line">
-    <a href="#/product/${p.slug}" class="line-img" data-close>${img(imgSrc(p, 1), p.title)}</a>
+    <a href="#/product/${p.handle}" class="line-img" data-close>${img(sized(p.images[0], 200), p.title)}</a>
     <div>
-      <a href="#/product/${p.slug}" class="line-title" data-close>${esc(p.title)}</a>
-      <p class="small muted">${s.label} / ${f.label}</p>
+      <a href="#/product/${p.handle}" class="line-title" data-close>${esc(p.title)}</a>
+      ${variantLabel(v) ? `<p class="small muted">${esc(variantLabel(v))}</p>` : ''}
       ${controls}
     </div>
-    <p>${money(unitPrice(p, l.frame) * l.qty)}</p>
+    <p>${money(v.price * l.qty)}</p>
   </div>`;
 }
 
@@ -561,14 +633,21 @@ function renderCart() {
   $('#cartSubtotal').textContent = money(subtotal());
 }
 
-/* Checkout hook: connect Shopify, Stripe or another provider here */
-function startCheckout(cartLines) {
+/* Checkout: stays on the "opens soon" page until CHECKOUT_ENABLED is true */
+async function startCheckout(lines) {
   if (!CHECKOUT_ENABLED) {
     closePanel(false);
     location.hash = '#/checkout';
     return;
   }
-  // Later: send cartLines to Shopify or Stripe, then redirect to the checkout URL they return.
+  try {
+    const data = await shopify(CART_CREATE, { lines: lines.map(l => ({ merchandiseId: l.key, quantity: l.qty })) });
+    const res = data.cartCreate;
+    if (res.userErrors.length) throw new Error(res.userErrors[0].message);
+    location.href = res.cart.checkoutUrl;
+  } catch (e) {
+    toast('Checkout could not start. Please try again.');
+  }
 }
 
 /* ===== Panels ===== */
@@ -621,81 +700,92 @@ function toast(msg) {
   toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
 }
 
-/* ===== Cards and pickers ===== */
+/* ===== Cards and options ===== */
 function card(p, i = 0) {
   return `<article class="card reveal" style="--d:${(i % 4) * 0.08}s">
     <div class="media">
-      <a href="#/product/${p.slug}" class="media-link" aria-label="${esc(p.title)}">
+      <a href="#/product/${p.handle}" class="media-link" aria-label="${esc(p.title)}">
         ${ph(p.title)}
-        ${img(imgSrc(p, 1), p.title + ' print', 'main')}
-        ${img(imgSrc(p, 2), p.title + ' framed', 'alt')}
+        ${img(sized(p.images[0], 800), p.title, 'main')}
+        ${p.images[1] ? img(sized(p.images[1], 800), p.title, 'alt') : ''}
       </a>
-      <button class="quick" data-quick="${p.id}">Quick add</button>
+      <button class="quick" data-quick="${p.handle}">Quick add</button>
     </div>
-    <h3><a href="#/product/${p.slug}" class="ulink">${esc(p.title)}</a></h3>
-    <p class="price">From ${money(p.price)}</p>
+    <h3><a href="#/product/${p.handle}" class="ulink">${esc(p.title)}</a></h3>
+    <p class="price">${priceLabel(p)}</p>
   </article>`;
 }
 
-function pickers(prefix) {
-  return `
-    <div class="opt">
-      <p class="opt-label">Size</p>
-      <div class="chips" role="group" aria-label="Size">
-        ${SIZES.map((s, i) => `<button class="pill" data-${prefix}-size="${s.id}" aria-pressed="${i === 0}">${s.label}</button>`).join('')}
-      </div>
-    </div>
-    <div class="opt">
-      <p class="opt-label">Frame</p>
-      <div class="chips" role="group" aria-label="Frame">
-        ${FRAMES.map((f, i) => `<button class="pill" data-${prefix}-frame="${f.id}" aria-pressed="${i === 0}">${f.label}</button>`).join('')}
-      </div>
-    </div>`;
+function initialSel(p) {
+  const v = p.variants.find(x => x.available) || p.variants[0];
+  return { ...(v ? v.options : {}) };
 }
-
-function bindPickers(root, prefix, state, onChange) {
-  ['size', 'frame'].forEach(kind => {
-    $$(`[data-${prefix}-${kind}]`, root).forEach(btn => {
-      btn.addEventListener('click', () => {
-        $$(`[data-${prefix}-${kind}]`, root).forEach(b => b.setAttribute('aria-pressed', 'false'));
-        btn.setAttribute('aria-pressed', 'true');
-        state[kind] = btn.getAttribute(`data-${prefix}-${kind}`);
-        onChange();
-      });
-    });
-  });
+function findVariant(p, sel) {
+  return p.variants.find(v => p.options.every(o => v.options[o.name] === sel[o.name])) || null;
+}
+function optionPickers(p, sel) {
+  return p.options.map((o, oi) => `
+    <div class="opt">
+      <p class="opt-label">${esc(o.name)}</p>
+      <div class="chips" role="group" aria-label="${esc(o.name)}">
+        ${o.values.map(v => `<button class="pill" data-opt="${oi}" data-val="${esc(v)}" aria-pressed="${sel[o.name] === v}">${esc(v)}</button>`).join('')}
+      </div>
+    </div>`).join('');
+}
+function bindOptions(root, p, sel, onChange) {
+  $$('[data-opt]', root).forEach(b => b.addEventListener('click', () => {
+    const oi = b.dataset.opt;
+    $$(`[data-opt="${oi}"]`, root).forEach(x => x.setAttribute('aria-pressed', 'false'));
+    b.setAttribute('aria-pressed', 'true');
+    sel[p.options[oi].name] = b.dataset.val;
+    onChange();
+  }));
+}
+function buyState(v) {
+  if (!v || !v.id) return 'Unavailable';
+  if (!v.available) return 'Sold out';
+  return null;
 }
 
 /* ===== Quick add ===== */
-function openQuick(id) {
-  const p = byId(id);
-  const state = { size: SIZES[0].id, frame: FRAMES[0].id };
+function openQuick(handle) {
+  const p = byHandle(handle);
+  if (!p) return;
+  const sel = initialSel(p);
   const body = $('#quickBody');
   body.innerHTML = `
-    <p class="small muted">${p.series}</p>
+    ${p.type ? `<p class="small muted">${esc(p.type)}</p>` : ''}
     <h2 class="h-m" style="margin:6px 0 10px">${esc(p.title)}</h2>
-    <p id="qPrice" style="font-weight:600;font-size:20px;margin-bottom:24px">${money(p.price)}</p>
-    ${pickers('q')}
+    <p id="qPrice" style="font-weight:600;font-size:20px;margin-bottom:24px"></p>
+    ${optionPickers(p, sel)}
     <button class="btn block" id="qAdd">Add to cart</button>
-    <p style="margin-top:14px"><a href="#/product/${p.slug}" class="ulink small" data-close>View full details</a></p>`;
-  bindPickers(body, 'q', state, () => { $('#qPrice').textContent = money(unitPrice(p, state.frame)); });
-  $('#qAdd').addEventListener('click', () => addToCart(p.id, state.size, state.frame, 1));
+    <p style="margin-top:14px"><a href="#/product/${p.handle}" class="ulink small" data-close>View full details</a></p>`;
+  const refresh = () => {
+    const v = findVariant(p, sel), state = buyState(v), btn = $('#qAdd');
+    $('#qPrice').textContent = v ? money(v.price) : 'Unavailable';
+    btn.disabled = !!state;
+    btn.textContent = state || 'Add to cart';
+  };
+  bindOptions(body, p, sel, refresh);
+  refresh();
+  $('#qAdd').addEventListener('click', () => addToCart(p, findVariant(p, sel), 1));
   openPanel($('#quickModal'));
 }
 
 /* ===== Pages ===== */
 function pageHome() {
-  const featured = PRODUCTS.filter(p => p.featured);
+  const hero = PRODUCTS[0];
+  const feature = PRODUCTS[Math.min(4, PRODUCTS.length - 1)];
   return {
     title: '',
     html: `
     <section class="hero">
-      ${ph('Hero artwork')}
-      ${img('images/hero.jpg', 'Latest Los-talgia series', 'bg', true)}
+      ${ph('')}
+      ${img(sized(hero && hero.images[0], 2000), hero ? hero.title : '', 'bg', true)}
       <div class="hero-box">
-        <p class="kicker">New series</p>
-        <h1 class="h-xl">[Series name]</h1>
-        <p>[One line about the new series and the toys that inspired it.]</p>
+        <p class="kicker">Limited edition prints</p>
+        <h1 class="h-xl">Nostalgic toy art</h1>
+        <p>Celebrating the toys and memories of the 70s, 80s and 90s.</p>
         <a href="#/shop" class="btn">Shop the collection</a>
       </div>
     </section>
@@ -703,15 +793,15 @@ function pageHome() {
     <section class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <h2 class="h-l">Latest series</h2>
+          <h2 class="h-l">Latest prints</h2>
           <a href="#/shop" class="ulink">Shop the collection</a>
         </div>
-        <div class="grid">${featured.map(card).join('')}</div>
+        <div class="grid">${PRODUCTS.slice(0, 4).map(card).join('')}</div>
       </div>
     </section>
 
     <section class="split">
-      <div class="pic">${ph('Studio or process photo')}${img('images/studio.jpg', 'Inside the Los-talgia studio')}</div>
+      <div class="pic">${img(sized(feature && feature.images[0], 1400), feature ? feature.title : '')}</div>
       <div class="txt reveal">
         <h2 class="h-l">Toys we never forgot</h2>
         <p>[A short paragraph about why Los-talgia exists: the toys, the Saturday mornings and the memories each print brings back.]</p>
@@ -722,7 +812,7 @@ function pageHome() {
     <section class="section">
       <div class="wrap">
         <div class="section-head reveal">
-          <h2 class="h-l">Limited edition prints</h2>
+          <h2 class="h-l">All prints</h2>
           <a href="#/shop" class="ulink">Shop all prints</a>
         </div>
         <div class="grid">${PRODUCTS.map(card).join('')}</div>
@@ -732,15 +822,17 @@ function pageHome() {
 }
 
 function pageShop(query) {
-  const start = new URLSearchParams(query).get('s') || 'all';
+  const types = [...new Set(PRODUCTS.map(p => p.type).filter(Boolean))];
+  const wanted = new URLSearchParams(query).get('s');
+  const start = types.includes(wanted) ? wanted : 'all';
   return {
     title: 'Shop prints',
     html: `
     <section class="wrap">
       <div class="page-head reveal"><h1 class="h-xl">All prints</h1></div>
       <div class="toolbar">
-        <div class="chips" role="group" aria-label="Filter by decade">
-          ${['all', '70s', '80s', '90s'].map(s => `<button class="pill" data-filter="${s}" aria-pressed="${s === start}">${s === 'all' ? 'All' : s}</button>`).join('')}
+        <div class="chips" role="group" aria-label="Filter prints">
+          ${types.length > 1 ? ['all', ...types].map(s => `<button class="pill" data-filter="${esc(s)}" aria-pressed="${s === start}">${s === 'all' ? 'All' : esc(s)}</button>`).join('') : ''}
         </div>
         <div class="sort">
           <label for="sortBy" class="small">Sort by</label>
@@ -757,10 +849,11 @@ function pageShop(query) {
     </section>`,
     init() {
       const state = { filter: start, sort: 'featured' };
+      const low = p => Math.min(...p.variants.map(v => v.price == null ? Infinity : v.price));
       const draw = () => {
-        let list = PRODUCTS.filter(p => state.filter === 'all' || p.series === state.filter);
-        if (state.sort === 'low') list = [...list].sort((a, b) => a.price - b.price);
-        if (state.sort === 'high') list = [...list].sort((a, b) => b.price - a.price);
+        let list = PRODUCTS.filter(p => state.filter === 'all' || p.type === state.filter);
+        if (state.sort === 'low') list = [...list].sort((a, b) => low(a) - low(b));
+        if (state.sort === 'high') list = [...list].sort((a, b) => low(b) - low(a));
         if (state.sort === 'az') list = [...list].sort((a, b) => a.title.localeCompare(b.title));
         $('#shopGrid').innerHTML = list.map(card).join('');
         $('#shopCount').textContent = `${list.length} ${list.length === 1 ? 'print' : 'prints'}`;
@@ -780,11 +873,11 @@ function pageShop(query) {
 
 let stickyObs = null;
 function pageProduct(p) {
-  const more = PRODUCTS.filter(x => x.series === p.series && x.id !== p.id).slice(0, 4);
-  const shots = [1, 2, 3];
+  const more = PRODUCTS.filter(x => x.handle !== p.handle).slice(0, 4);
+  const shots = p.images.length ? p.images : [''];
+  const many = shots.length > 1;
   const acc = [
-    ['Description', esc(p.description)],
-    ['About the series', SERIES_STORY],
+    ['Description', p.description ? esc(p.description) : '[Description]'],
     ['Frame details', FRAME_DETAILS],
     ['Delivery and returns', DELIVERY_TEXT]
   ];
@@ -796,20 +889,21 @@ function pageProduct(p) {
       <section class="pdp">
         <div>
           <div class="gallery-main">
-            ${shots.map((n, i) => `<div class="slide ${i === 0 ? 'on' : ''}">${ph(p.title + ' view ' + n)}${img(imgSrc(p, n), `${p.title} view ${n}`, '', i === 0)}</div>`).join('')}
+            ${shots.map((src, i) => `<div class="slide ${i === 0 ? 'on' : ''}">${img(sized(src, 1600), `${p.title} image ${i + 1}`, '', i === 0)}</div>`).join('')}
+            ${many ? `
             <button class="g-arrow prev" aria-label="Previous image">${ICONS.prev}</button>
             <button class="g-arrow next" aria-label="Next image">${ICONS.next}</button>
-            <span class="g-count" id="gCount">1 / ${shots.length}</span>
+            <span class="g-count" id="gCount">1 / ${shots.length}</span>` : ''}
           </div>
-          <div class="thumbs">
-            ${shots.map((n, i) => `<button data-thumb="${i}" aria-label="Show image ${n}" aria-current="${i === 0}">${img(imgSrc(p, n), '')}</button>`).join('')}
-          </div>
+          ${many ? `<div class="thumbs">
+            ${shots.map((src, i) => `<button data-thumb="${i}" aria-label="Show image ${i + 1}" aria-current="${i === 0}">${img(sized(src, 300), '')}</button>`).join('')}
+          </div>` : ''}
         </div>
         <div class="info">
           <h1 class="h-l">${esc(p.title)}</h1>
-          <p class="price-big" id="pPrice">${money(p.price)}</p>
-          <p class="edition">${esc(p.edition)}. Tax included.</p>
-          ${pickers('p')}
+          <p class="price-big" id="pPrice"></p>
+          <p class="edition">${p.type ? esc(p.type) : '&nbsp;'}</p>
+          ${optionPickers(p, initialSel(p))}
           <p class="opt-label">Quantity</p>
           <div class="buy">
             <div class="qty">
@@ -821,7 +915,6 @@ function pageProduct(p) {
           </div>
           <ul class="perks">
             <li>Estimated delivery: [date range]</li>
-            <li><strong>Free delivery</strong> on all UK orders</li>
           </ul>
           <div class="acc">
             ${acc.map(([h, t], i) => `
@@ -836,29 +929,41 @@ function pageProduct(p) {
     ${more.length ? `
     <section class="section" style="border-top:1px solid var(--line)">
       <div class="wrap">
-        <div class="section-head reveal"><h2 class="h-l">More from the ${p.series}</h2><a href="#/shop?s=${p.series}" class="ulink">View all</a></div>
+        <div class="section-head reveal"><h2 class="h-l">You may also like</h2><a href="#/shop" class="ulink">View all</a></div>
         <div class="grid">${more.map(card).join('')}</div>
       </div>
     </section>` : ''}`,
     init() {
-      const state = { size: SIZES[0].id, frame: FRAMES[0].id, qty: 1, slide: 0 };
-      bindPickers($('.info'), 'p', state, () => { $('#pPrice').textContent = money(unitPrice(p, state.frame)); });
-
-      const show = i => {
-        state.slide = (i + shots.length) % shots.length;
-        $$('.gallery-main .slide').forEach((s, n) => s.classList.toggle('on', n === state.slide));
-        $$('[data-thumb]').forEach((t, n) => t.setAttribute('aria-current', n === state.slide));
-        $('#gCount').textContent = `${state.slide + 1} / ${shots.length}`;
+      const sel = initialSel(p);
+      const state = { qty: 1, slide: 0 };
+      const refresh = () => {
+        const v = findVariant(p, sel), s = buyState(v);
+        $('#pPrice').textContent = v ? money(v.price) : 'Unavailable';
+        $('#addBtn').disabled = !!s;
+        $('#addBtn').textContent = s || 'Add to cart';
+        $('#stickyBtn').disabled = !!s;
+        $('#stickyBtn').textContent = s || 'Add to cart';
       };
-      $('.g-arrow.prev').addEventListener('click', () => show(state.slide - 1));
-      $('.g-arrow.next').addEventListener('click', () => show(state.slide + 1));
-      $$('[data-thumb]').forEach(t => t.addEventListener('click', () => show(+t.dataset.thumb)));
+      bindOptions($('.info'), p, sel, refresh);
+      refresh();
+
+      if (many) {
+        const show = i => {
+          state.slide = (i + shots.length) % shots.length;
+          $$('.gallery-main .slide').forEach((s, n) => s.classList.toggle('on', n === state.slide));
+          $$('[data-thumb]').forEach((t, n) => t.setAttribute('aria-current', n === state.slide));
+          $('#gCount').textContent = `${state.slide + 1} / ${shots.length}`;
+        };
+        $('.g-arrow.prev').addEventListener('click', () => show(state.slide - 1));
+        $('.g-arrow.next').addEventListener('click', () => show(state.slide + 1));
+        $$('[data-thumb]').forEach(t => t.addEventListener('click', () => show(+t.dataset.thumb)));
+      }
 
       const setQty = n => { state.qty = Math.max(1, Math.min(10, n)); $('#qVal').textContent = state.qty; };
       $('#qMinus').addEventListener('click', () => setQty(state.qty - 1));
       $('#qPlus').addEventListener('click', () => setQty(state.qty + 1));
 
-      const add = () => addToCart(p.id, state.size, state.frame, state.qty);
+      const add = () => addToCart(p, findVariant(p, sel), state.qty);
       $('#addBtn').addEventListener('click', add);
 
       $$('.acc-btn').forEach(btn => btn.addEventListener('click', () => {
@@ -892,6 +997,7 @@ function pageProduct(p) {
 }
 
 function pageAbout() {
+  const band = PRODUCTS[1] || PRODUCTS[0];
   return {
     title: 'About',
     html: `
@@ -904,7 +1010,7 @@ function pageAbout() {
       <div class="reveal" style="--d:.08s"><h2>How each piece is made</h2><p>[A few lines on the process, materials and printing.]</p></div>
       <div class="reveal" style="--d:.16s"><h2>Why toys</h2><p>[A few lines on why the toys of the 70s, 80s and 90s still matter.]</p></div>
     </section>
-    <section class="band">${ph('Wide studio image')}${img('images/about-band.jpg', 'Los-talgia prints in the studio')}</section>`
+    <section class="band">${img(sized(band && band.images[0], 2000), band ? band.title : '')}</section>`
   };
 }
 
@@ -1060,7 +1166,7 @@ function router() {
 
   let view;
   if (page === 'product') {
-    const p = bySlug(param);
+    const p = byHandle(param);
     view = p ? pageProduct(p) : pageNotFound();
   } else if (ROUTES[page] !== undefined) {
     view = ROUTES[page](query);
@@ -1113,9 +1219,9 @@ setInterval(() => {
 /* ===== Search ===== */
 $('#searchInput').addEventListener('input', e => {
   const q = e.target.value.trim().toLowerCase();
-  const list = q ? PRODUCTS.filter(p => (p.title + ' ' + p.series).toLowerCase().includes(q)) : [];
+  const list = q ? PRODUCTS.filter(p => [p.title, p.type, ...p.tags].join(' ').toLowerCase().includes(q)) : [];
   $('#searchResults').innerHTML = q
-    ? (list.length ? list.map(card).join('') : `<p class="muted">No prints match "${esc(q)}". Try a decade like 80s.</p>`)
+    ? (list.length ? list.map(card).join('') : `<p class="muted">No prints match "${esc(q)}".</p>`)
     : '';
   $$('#searchResults .reveal').forEach(el => el.classList.add('in'));
 });
@@ -1153,16 +1259,28 @@ $('#newsForm').addEventListener('submit', e => {
 });
 
 /* ===== Start ===== */
-$$('[data-logo]').forEach(i => { i.src = LOGO; });
-$('#igLink').href = INSTAGRAM_URL;
-$('#marquee').innerHTML = Array(8).fill(`<a href="${INSTAGRAM_URL}" target="_blank" rel="noopener">${INSTAGRAM_HANDLE}</a>`).join('');
-$('#year').textContent = new Date().getFullYear();
-$('#announceText').textContent = ANNOUNCEMENTS[0];
-fillIcons();
-updateCount();
-renderCart();
-addEventListener('hashchange', router);
-router();
+async function start() {
+  $$('[data-logo]').forEach(i => { i.src = LOGO; });
+  $('#igLink').href = INSTAGRAM_URL;
+  $('#marquee').innerHTML = Array(8).fill(`<a href="${INSTAGRAM_URL}" target="_blank" rel="noopener">${INSTAGRAM_HANDLE}</a>`).join('');
+  $('#year').textContent = new Date().getFullYear();
+  $('#announceText').textContent = ANNOUNCEMENTS[0];
+  fillIcons();
+  $('#app').innerHTML = '<p class="muted" style="padding:160px 20px;text-align:center">Loading prints</p>';
+
+  try {
+    PRODUCTS = await loadShopify();
+    if (!PRODUCTS.length) throw new Error('No products returned');
+  } catch (err) {
+    console.warn('Using the backup product list:', err);
+    PRODUCTS = FALLBACK;
+  }
+
+  saveCart();
+  addEventListener('hashchange', router);
+  router();
+}
+start();
 </script>
 </body>
 </html>
