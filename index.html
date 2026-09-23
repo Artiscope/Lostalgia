@@ -145,14 +145,6 @@ input,textarea,select{font:inherit;color:inherit}
 .split .txt p{max-width:48ch}
 .split .txt .btn{align-self:flex-start}
 
-/* Marquee */
-.marquee{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);overflow:hidden;padding:28px 0}
-.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.marquee a{font-weight:900;font-stretch:125%;font-size:clamp(40px,7vw,96px);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ink);padding-right:56px;white-space:nowrap;transition:color .3s var(--ease)}
-.marquee a:hover{color:var(--ink)}
-@keyframes marquee{to{transform:translateX(-50%)}}
-
 /* Newsletter and footer */
 .newsletter{text-align:center}
 .newsletter p{margin:12px auto 28px}
@@ -319,11 +311,7 @@ fieldset[disabled] input,fieldset[disabled] select{background:var(--mist);color:
 
 <main id="main" tabindex="-1"><div id="app"></div></main>
 
-<section class="marquee" aria-label="Instagram">
-  <div class="marquee-track" id="marquee"></div>
-</section>
-
-<section class="section newsletter">
+<section class="section newsletter" style="border-top:1px solid var(--line)">
   <div class="wrap reveal">
     <h2 class="h-l">Join the list</h2>
     <p class="muted">New prints and store updates, straight to your inbox.</p>
@@ -434,7 +422,6 @@ const LOGO = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA4QAAACPAQAAAACKGijI
 const SHOPIFY_DOMAIN = 'lovable-project-4s2r0.myshopify.com';
 const SHOPIFY_TOKEN = '5fad55e82c12edd19a61e036d530cd19';
 const SHOPIFY_API = '2025-07';
-const INSTAGRAM_HANDLE = '@lostalgia';   // [your handle]
 const INSTAGRAM_URL = 'https://instagram.com/[your-handle]';
 const ANNOUNCEMENTS = ['Free UK delivery on all orders', 'Limited editions, printed to order', '[Third message]'];
 const FRAME_DETAILS = '[Frame details, for example moulding size, glazing and backing.]';
@@ -1262,7 +1249,6 @@ $('#newsForm').addEventListener('submit', e => {
 async function start() {
   $$('[data-logo]').forEach(i => { i.src = LOGO; });
   $('#igLink').href = INSTAGRAM_URL;
-  $('#marquee').innerHTML = Array(8).fill(`<a href="${INSTAGRAM_URL}" target="_blank" rel="noopener">${INSTAGRAM_HANDLE}</a>`).join('');
   $('#year').textContent = new Date().getFullYear();
   $('#announceText').textContent = ANNOUNCEMENTS[0];
   fillIcons();
