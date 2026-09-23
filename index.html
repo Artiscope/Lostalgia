@@ -3,231 +3,1165 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Lostalgia | Nostalgic Toy Art</title>
-<meta name="description" content="Artwork celebrating the toys and memories of the 70s, 80s and 90s.">
+<title>Lostalgia | Nostalgic Toy Art Prints</title>
+<meta name="description" content="Limited edition prints celebrating the toys and memories of the 70s, 80s and 90s.">
+<meta property="og:title" content="Lostalgia | Nostalgic Toy Art Prints">
+<meta property="og:description" content="Limited edition prints celebrating the toys and memories of the 70s, 80s and 90s.">
+<meta property="og:image" content="images/og-image.jpg">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Work+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --sky: #CFE9F7;
-    --card: #2F7FC1;
-    --sun: #FFD23F;
-    --cherry: #E4303F;
-    --ink: #1B2A4A;
-    --white: #FFFFFF;
-    --display: "Bungee", "Arial Black", sans-serif;
-    --body: "Work Sans", "Helvetica Neue", Arial, sans-serif;
-  }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--body); background: var(--sky); color: var(--ink); line-height: 1.6; }
-  img { max-width: 100%; display: block; }
-  a { color: inherit; }
-  :focus-visible { outline: 3px solid var(--cherry); outline-offset: 3px; }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 1.25rem; }
+:root{
+  --ink:#000;--paper:#fff;--mist:#f3f3f3;--line:#d9d9d9;--muted:#666;
+  --font:"Archivo",Arial,Helvetica,sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --gutter:40px;--max:1440px;--bb:0px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--font);font-size:16px;line-height:1.6;color:var(--ink);background:var(--paper);-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,textarea,select{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+.sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--paper);padding:12px 16px;z-index:999}
+.skip:focus{left:16px;top:16px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gutter)}
+.h-xl,.h-l,.h-m{font-weight:800;font-stretch:125%;line-height:1;letter-spacing:-.01em}
+.h-xl{font-size:clamp(40px,8vw,96px)}
+.h-l{font-size:clamp(28px,4.5vw,64px)}
+.h-m{font-size:clamp(22px,2.6vw,40px)}
+.muted{color:var(--muted)}
+.small{font-size:13px}
+.section{padding:96px 0}
+.section-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:40px;flex-wrap:wrap}
+.prose p{max-width:65ch;margin-bottom:16px}
 
-  /* Header */
-  header { background: var(--ink); color: var(--white); }
-  .nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 0; gap: 1rem; flex-wrap: wrap; }
-  .logo { font-family: var(--display); font-size: 1.6rem; color: var(--sun); text-decoration: none; }
-  .nav ul { display: flex; gap: 1.5rem; list-style: none; }
-  .nav a { text-decoration: none; font-weight: 500; }
-  .nav a:hover { color: var(--sun); }
+/* Links and buttons */
+.ulink{background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .3s var(--ease);padding-bottom:2px}
+.ulink:hover,.ulink[aria-current="page"]{background-size:100% 1px}
+.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;height:52px;padding:0 32px;border:1px solid var(--ink);background:var(--ink);color:var(--paper);font-weight:600;overflow:hidden;isolation:isolate;transition:color .3s var(--ease)}
+.btn::before{content:"";position:absolute;inset:0;background:var(--paper);transform:translateY(101%);transition:transform .3s var(--ease);z-index:-1}
+.btn:hover{color:var(--ink)}
+.btn:hover::before{transform:translateY(0)}
+.btn.ghost{background:var(--paper);color:var(--ink)}
+.btn.ghost::before{background:var(--ink)}
+.btn.ghost:hover{color:var(--paper)}
+.btn.block{width:100%}
+.btn[disabled]{background:var(--line);border-color:var(--line);color:var(--muted);cursor:not-allowed}
+.btn[disabled]::before{display:none}
+.btn[disabled]:hover{color:var(--muted)}
 
-  /* Hero */
-  .hero { padding: 4rem 0 5rem; display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
-  .hero h1 { font-family: var(--display); font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.05; margin-bottom: 1.25rem; }
-  .hero p { font-size: 1.15rem; max-width: 34ch; margin-bottom: 2rem; }
-  .btn { display: inline-block; background: var(--cherry); color: var(--white); font-weight: 700; padding: 0.9rem 1.6rem; border-radius: 999px; text-decoration: none; border: 3px solid var(--ink); box-shadow: 4px 4px 0 var(--ink); }
-  .btn:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--ink); }
+/* Announcement and header */
+.announce{background:var(--ink);color:var(--paper);text-align:center;font-size:13px;padding:10px 20px}
+.announce span{display:inline-block;transition:opacity .4s var(--ease)}
+.header{position:sticky;top:0;z-index:50;background:var(--paper);border-bottom:1px solid var(--line);transition:transform .3s var(--ease)}
+.header.hide{transform:translateY(-100%)}
+.header-inner{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px}
+.nav-left{display:flex;gap:28px;font-weight:500;align-items:center}
+.logo{font-weight:900;font-stretch:125%;font-size:26px;letter-spacing:-.02em}
+.nav-right{display:flex;justify-content:flex-end;align-items:center;gap:8px}
+.icon-btn{width:40px;height:40px;display:inline-grid;place-items:center;position:relative}
+.icon-btn svg{width:22px;height:22px}
+.count{position:absolute;top:2px;right:0;min-width:18px;height:18px;border-radius:9px;background:var(--ink);color:var(--paper);font-size:11px;font-weight:700;display:grid;place-items:center;padding:0 4px}
+.count[hidden]{display:none}
+.count.bump{animation:bump .3s var(--ease)}
+@keyframes bump{50%{transform:scale(1.3)}}
+.burger{display:none}
 
-  /* Cardback: the signature element */
-  .cardback { position: relative; background: var(--card); border: 4px solid var(--ink); border-radius: 18px 18px 8px 8px; padding: 3.2rem 1.4rem 1.4rem; box-shadow: 8px 8px 0 var(--ink); }
-  .cardback::before { content: ""; position: absolute; top: 1rem; left: 50%; width: 46px; height: 14px; transform: translateX(-50%); background: var(--sky); border: 3px solid var(--ink); border-radius: 999px; }
-  .blister { background: rgba(255,255,255,0.35); border: 3px solid var(--white); border-radius: 14px; padding: 0.8rem; }
-  .art { aspect-ratio: 4 / 5; border-radius: 8px; background: var(--sun) center / cover no-repeat; display: grid; place-items: center; font-family: var(--display); color: var(--ink); text-align: center; padding: 1rem; }
-  .sticker { position: absolute; right: -14px; bottom: 22%; width: 84px; height: 84px; border-radius: 50%; background: var(--sun); border: 3px solid var(--ink); display: grid; place-items: center; font-family: var(--display); font-size: 1.05rem; transform: rotate(-12deg); }
-  .hero .cardback { max-width: 380px; justify-self: center; transform: rotate(3deg); }
+/* Overlay, drawers, modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);opacity:0;visibility:hidden;transition:opacity .4s var(--ease),visibility .4s;z-index:80}
+.overlay.show{opacity:1;visibility:visible}
+.drawer,.menu{position:fixed;top:0;height:100%;width:min(440px,100%);background:var(--paper);z-index:90;display:flex;flex-direction:column;visibility:hidden;transition:transform .4s var(--ease),visibility .4s}
+.drawer{right:0;transform:translateX(100%)}
+.menu{left:0;transform:translateX(-100%);padding:24px}
+.drawer.open,.menu.open{transform:none;visibility:visible}
+.panel-head{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;border-bottom:1px solid var(--line)}
+.panel-head h2{font-size:20px;font-weight:700}
+.menu .panel-head{padding:0 0 24px;border:0}
+.menu nav a{display:block;font-weight:800;font-stretch:125%;font-size:36px;line-height:1.3}
+.cart-body{flex:1;overflow-y:auto;padding:0 24px}
+.cart-foot{padding:24px;border-top:1px solid var(--line)}
+.cart-foot .row{display:flex;justify-content:space-between;font-weight:600;margin-bottom:6px}
+.cart-foot .btn{margin-top:16px}
+.cart-foot .cont{display:block;text-align:center;margin-top:14px}
+.empty{padding:64px 0;text-align:center}
+.empty .btn{margin-top:24px}
+.line{display:grid;grid-template-columns:88px 1fr auto;gap:16px;padding:20px 0;border-bottom:1px solid var(--line)}
+.line-img{position:relative;aspect-ratio:1;background:var(--mist);overflow:hidden}
+.line-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.line-title{font-weight:600}
+.line-row{display:flex;align-items:center;gap:16px;margin-top:10px}
+.modal{position:fixed;left:50%;top:50%;width:min(520px,calc(100% - 32px));max-height:calc(100% - 32px);overflow:auto;background:var(--paper);z-index:90;padding:32px;visibility:hidden;opacity:0;transform:translate(-50%,-50%) scale(.98);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s}
+.modal.open{visibility:visible;opacity:1;transform:translate(-50%,-50%) scale(1)}
+.modal .close{position:absolute;top:12px;right:12px}
+.search{position:fixed;top:0;left:0;right:0;background:var(--paper);z-index:90;padding:24px 0 40px;visibility:hidden;opacity:0;transform:translateY(-12px);transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s;max-height:100%;overflow:auto}
+.search.open{visibility:visible;opacity:1;transform:none}
+.search-bar{display:flex;gap:16px;align-items:center;border-bottom:1px solid var(--ink)}
+.search-bar input{flex:1;border:0;padding:16px 0;font-size:24px;font-weight:600;outline:none}
+.search-results{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:32px}
 
-  /* Shop */
-  .shop { padding: 4rem 0; }
-  .shop h2, .about h2, .signup h2 { font-family: var(--display); font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 1rem; }
-  .filters { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
-  .filters button { font: 700 1rem var(--body); padding: 0.55rem 1.2rem; border-radius: 999px; border: 3px solid var(--ink); background: var(--white); color: var(--ink); cursor: pointer; }
-  .filters button[aria-pressed="true"] { background: var(--ink); color: var(--sun); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 2.5rem 2rem; }
-  .item .cardback { box-shadow: 5px 5px 0 var(--ink); }
-  .item .sticker { width: 68px; height: 68px; font-size: 0.9rem; right: -10px; }
-  .item h3 { font-size: 1.1rem; margin-top: 1rem; }
-  .item p { font-size: 0.95rem; }
-  .item[hidden] { display: none; }
+/* Hero */
+.hero{position:relative;min-height:min(82vh,860px);display:flex;align-items:flex-end;background:var(--mist);overflow:hidden}
+.hero .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .ph{font-size:15px}
+.hero-box{position:relative;background:var(--paper);padding:40px;margin:0 0 var(--gutter) var(--gutter);max-width:640px}
+.hero-box>*{animation:rise .8s var(--ease) both}
+.hero-box>*:nth-child(2){animation-delay:.1s}
+.hero-box>*:nth-child(3){animation-delay:.15s}
+.hero-box>*:nth-child(4){animation-delay:.25s}
+.hero-box .kicker{font-weight:600;margin-bottom:12px}
+.hero-box p{margin:16px 0 28px;max-width:44ch}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}}
 
-  /* About */
-  .about { background: var(--sun); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); padding: 4rem 0; }
-  .about .wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 3rem; align-items: center; }
-  .about p { max-width: 60ch; margin-bottom: 1rem; }
-  .about .art { background-color: var(--white); border: 4px solid var(--ink); }
+/* Cards and grids */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:48px 24px}
+.card .media{position:relative;aspect-ratio:1;background:var(--mist);overflow:hidden}
+.media-link{position:absolute;inset:0;display:block}
+.media-link img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:opacity .4s var(--ease),transform .6s var(--ease)}
+.media-link img.alt{opacity:0}
+.card:hover .media-link img.main{transform:scale(1.03)}
+.card:hover .media-link img.alt{opacity:1}
+.ph{position:absolute;inset:0;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:12px}
+.quick{position:absolute;left:12px;right:12px;bottom:12px;height:44px;background:var(--paper);border:1px solid var(--ink);font-weight:600;font-size:14px;opacity:0;transform:translateY(8px);transition:opacity .3s var(--ease),transform .3s var(--ease),background .3s,color .3s}
+.quick:hover{background:var(--ink);color:var(--paper)}
+.card:hover .quick,.quick:focus-visible{opacity:1;transform:none}
+@media (hover:none){.quick{opacity:1;transform:none}}
+.card h3{font-size:15px;font-weight:600;margin-top:14px;line-height:1.4}
+.card .price{font-size:15px;color:var(--muted)}
 
-  /* Signup */
-  .signup { padding: 4rem 0; text-align: center; }
-  .signup p { margin: 0 auto 1.5rem; max-width: 46ch; }
-  .signup form { display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap; }
-  .signup input { font: 1rem var(--body); padding: 0.85rem 1.2rem; border: 3px solid var(--ink); border-radius: 999px; min-width: 260px; }
-  .signup .btn { cursor: pointer; font-size: 1rem; }
-  .msg { margin-top: 1rem; font-weight: 700; min-height: 1.6em; }
+/* Editorial split */
+.split{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.split .pic{position:relative;min-height:560px;background:var(--mist)}
+.split .pic img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.split .txt{padding:80px var(--gutter);display:flex;flex-direction:column;justify-content:center;gap:24px}
+.split .txt p{max-width:48ch}
+.split .txt .btn{align-self:flex-start}
 
-  footer { background: var(--ink); color: var(--white); padding: 2rem 0; font-size: 0.95rem; }
-  footer .wrap { display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+/* Marquee */
+.marquee{border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);overflow:hidden;padding:28px 0}
+.marquee-track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee a{font-weight:900;font-stretch:125%;font-size:clamp(40px,7vw,96px);line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--ink);padding-right:56px;white-space:nowrap;transition:color .3s var(--ease)}
+.marquee a:hover{color:var(--ink)}
+@keyframes marquee{to{transform:translateX(-50%)}}
 
-  @media (max-width: 800px) {
-    .hero, .about .wrap { grid-template-columns: 1fr; }
-    .hero { padding-top: 2.5rem; }
-    .nav ul { gap: 1rem; }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    .btn:hover { transform: none; }
-  }
+/* Newsletter and footer */
+.newsletter{text-align:center}
+.newsletter p{margin:12px auto 28px}
+.inline-form{display:flex;max-width:480px;margin:0 auto}
+.inline-form input{flex:1;min-width:0;height:52px;border:1px solid var(--ink);border-right:0;padding:0 16px;background:var(--paper)}
+.form-msg{min-height:1.6em;margin-top:12px;font-weight:600}
+.footer{background:var(--ink);color:var(--paper);padding:64px 0 calc(32px + var(--bb))}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:40px;padding-bottom:48px;border-bottom:1px solid #333}
+.footer h3{font-size:15px;font-weight:700;margin-bottom:16px}
+.footer li{list-style:none;margin-bottom:8px;color:#ccc}
+.footer li a:hover{color:var(--paper)}
+.footer-logo{font-weight:900;font-stretch:125%;font-size:40px;line-height:1}
+.footer-bottom{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;font-size:13px;color:#aaa}
+
+/* Shop page */
+.page-head{padding:64px 0 32px}
+.toolbar{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-bottom:40px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.pill{height:44px;padding:0 18px;border:1px solid var(--line);font-weight:500;transition:border-color .2s,background .2s,color .2s}
+.pill:hover{border-color:var(--ink)}
+.pill[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.sort{display:flex;align-items:center;gap:10px}
+.sort select{height:44px;border:1px solid var(--line);padding:0 12px;background:var(--paper)}
+
+/* Product page */
+.crumb{padding:24px 0 0;font-size:13px;color:var(--muted)}
+.crumb a:hover{color:var(--ink)}
+.pdp{display:grid;grid-template-columns:1.2fr 1fr;gap:64px;padding:24px 0 96px}
+.gallery-main{position:relative;aspect-ratio:1;background:var(--mist);overflow:hidden}
+.gallery-main .slide{position:absolute;inset:0;opacity:0;transition:opacity .4s var(--ease)}
+.gallery-main .slide.on{opacity:1}
+.gallery-main img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.g-arrow{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;background:var(--paper);border:1px solid var(--ink);display:grid;place-items:center;z-index:2}
+.g-arrow.prev{left:12px}.g-arrow.next{right:12px}
+.g-count{position:absolute;bottom:12px;left:12px;background:var(--paper);font-size:13px;padding:4px 10px;z-index:2}
+.thumbs{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:8px}
+.thumbs button{position:relative;aspect-ratio:1;background:var(--mist);border:1px solid transparent;overflow:hidden}
+.thumbs button[aria-current="true"]{border-color:var(--ink)}
+.thumbs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.info{position:sticky;top:100px;align-self:start}
+.info h1{margin-bottom:16px}
+.info .price-big{font-size:22px;font-weight:600}
+.info .edition{margin:4px 0 28px;color:var(--muted)}
+.opt{margin-bottom:24px}
+.opt-label{font-weight:600;margin-bottom:10px;font-size:15px}
+.buy{display:flex;gap:12px;margin:8px 0 20px}
+.buy .btn{flex:1}
+.qty{display:inline-flex;border:1px solid var(--line);height:52px;align-items:stretch}
+.qty button{width:44px;font-size:18px}
+.qty span{min-width:36px;display:grid;place-items:center;font-weight:600}
+.qty.sm{height:36px}
+.qty.sm button{width:32px}
+.perks li{list-style:none;padding:6px 0;font-size:15px}
+.acc{margin-top:28px;border-top:1px solid var(--line)}
+.acc-item{border-bottom:1px solid var(--line)}
+.acc-btn{width:100%;display:flex;justify-content:space-between;align-items:center;padding:18px 0;font-weight:600;text-align:left}
+.acc-btn .pm{font-size:20px;line-height:1;transition:transform .3s var(--ease)}
+.acc-btn[aria-expanded="true"] .pm{transform:rotate(180deg)}
+.acc-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s var(--ease)}
+.acc-panel>div{overflow:hidden}
+.acc-panel.open{grid-template-rows:1fr}
+.acc-panel p{padding-bottom:18px;color:#333}
+.sticky-atc{position:fixed;left:0;right:0;bottom:var(--bb);background:var(--paper);border-top:1px solid var(--ink);z-index:40;transform:translateY(calc(100% + var(--bb)));transition:transform .3s var(--ease)}
+.sticky-atc.show{transform:none}
+.sticky-atc .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:72px}
+.sticky-atc .t{font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sticky-atc .btn{height:44px}
+
+/* About, contact, policies */
+.about-hero{padding:96px 0 64px}
+.about-hero p{font-size:20px;max-width:52ch;margin-top:28px}
+.story{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;padding-bottom:96px}
+.story h2{font-size:20px;font-weight:700;margin-bottom:12px}
+.band{position:relative;height:60vh;min-height:360px;background:var(--mist)}
+.band img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.form{display:grid;gap:16px;max-width:640px}
+.form label{font-weight:600;font-size:15px;display:block;margin-bottom:6px}
+.form input,.form textarea,.form select{width:100%;border:1px solid var(--line);padding:14px 16px;background:var(--paper)}
+.form input:focus,.form textarea:focus{border-color:var(--ink);outline:none}
+.form textarea{min-height:160px;resize:vertical}
+
+/* Checkout */
+.checkout{display:grid;grid-template-columns:1fr 420px;gap:64px;padding:48px 0 96px}
+.notice{background:var(--ink);color:var(--paper);padding:32px;margin-bottom:40px}
+.notice p{margin:12px 0 20px;max-width:52ch}
+.notice .inline-form{margin:0}
+.notice .inline-form input{border-color:var(--paper)}
+.notice .btn.ghost{border-color:var(--paper)}
+.notice .form-msg{margin-top:12px}
+fieldset{border:0;margin-bottom:32px}
+legend{font-size:20px;font-weight:700;margin-bottom:16px}
+fieldset .form{max-width:none}
+fieldset[disabled] input,fieldset[disabled] select{background:var(--mist);color:var(--muted);cursor:not-allowed}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.summary{background:var(--mist);padding:32px;align-self:start;position:sticky;top:100px}
+.summary .line{grid-template-columns:64px 1fr auto;border-color:var(--line)}
+.summary .row{display:flex;justify-content:space-between;margin-top:12px}
+.summary .total{font-weight:700;font-size:20px;border-top:1px solid var(--ink);padding-top:16px;margin-top:16px}
+
+/* Toast and bottom bar */
+.toast{position:fixed;left:50%;bottom:calc(24px + var(--bb));transform:translate(-50%,20px);background:var(--ink);color:var(--paper);padding:14px 22px;font-weight:600;z-index:100;opacity:0;pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.bottom-bar{display:none;position:fixed;left:0;right:0;bottom:0;background:var(--paper);border-top:1px solid var(--line);z-index:45;padding-bottom:env(safe-area-inset-bottom)}
+.bottom-bar .inner{display:grid;grid-template-columns:repeat(4,1fr);height:64px}
+.bottom-bar a,.bottom-bar button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;font-size:11px;font-weight:600;position:relative}
+.bottom-bar svg{width:22px;height:22px}
+.bottom-bar .count{top:6px;right:calc(50% - 22px)}
+
+/* Scroll reveal */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .6s var(--ease),transform .6s var(--ease);transition-delay:var(--d,0s)}
+.reveal.in{opacity:1;transform:none}
+
+@media (max-width:990px){
+  .nav-left .ulink{display:none}
+  .burger{display:inline-grid}
+  .grid,.search-results{grid-template-columns:repeat(3,1fr)}
+  .pdp,.checkout,.split{grid-template-columns:1fr}
+  .info,.summary{position:static}
+  .story{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .footer-grid>div:first-child{grid-column:1/-1}
+}
+@media (max-width:750px){
+  :root{--gutter:20px;--bb:64px}
+  .section{padding:56px 0}
+  .grid,.search-results{grid-template-columns:repeat(2,1fr);gap:32px 12px}
+  .header-inner{height:64px}
+  .logo{font-size:22px}
+  .nav-right .hide-sm{display:none}
+  .hero-box{padding:24px;margin:0 var(--gutter) var(--gutter)}
+  .split .pic{min-height:360px}
+  .split .txt{padding:56px var(--gutter)}
+  .bottom-bar{display:block}
+  .two{grid-template-columns:1fr}
+  .summary{order:-1}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
 </head>
 <body>
+<a href="#main" class="skip">Skip to content</a>
 
-<header>
-  <div class="wrap nav">
-    <a href="#" class="logo">Lostalgia</a>
-    <nav aria-label="Main">
-      <ul>
-        <li><a href="#shop">Shop prints</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#signup">Newsletter</a></li>
-      </ul>
-    </nav>
+<div class="announce" aria-live="polite"><span id="announceText">Free UK delivery on all orders</span></div>
+
+<header class="header" id="header">
+  <div class="wrap header-inner">
+    <div class="nav-left">
+      <button class="icon-btn burger" data-open="menu" aria-label="Open menu" aria-controls="menu"></button>
+      <a href="#/shop" class="ulink" data-nav="shop">Shop</a>
+      <a href="#/about" class="ulink" data-nav="about">About</a>
+    </div>
+    <a href="#/" class="logo" aria-label="Lostalgia home">Lostalgia</a>
+    <div class="nav-right">
+      <button class="icon-btn" data-open="search" aria-label="Search" aria-controls="search" data-icon="search"></button>
+      <a class="icon-btn hide-sm" id="igLink" href="#" target="_blank" rel="noopener" aria-label="Instagram" data-icon="instagram"></a>
+      <button class="icon-btn" data-open="cart" aria-label="Open cart" aria-controls="cart"><span data-icon="bag"></span><span class="count" hidden>0</span></button>
+    </div>
   </div>
 </header>
 
-<main>
-  <section class="wrap hero">
-    <div>
-      <h1>The toys you grew up with, painted.</h1>
-      <p>Original artwork and prints inspired by the toys and memories of the 70s, 80s and 90s.</p>
-      <a href="#shop" class="btn">Shop prints</a>
-    </div>
-    <div class="cardback">
-      <div class="blister">
-        <!-- Swap in your hero image: style="background-image:url('images/hero.jpg')" -->
-        <div class="art">[Hero artwork]</div>
-      </div>
-      <div class="sticker">£[00]</div>
-    </div>
-  </section>
+<main id="main" tabindex="-1"><div id="app"></div></main>
 
-  <section class="shop" id="shop">
-    <div class="wrap">
-      <h2>Prints</h2>
-      <div class="filters" role="group" aria-label="Filter by decade">
-        <button type="button" data-filter="all" aria-pressed="true">All</button>
-        <button type="button" data-filter="70s" aria-pressed="false">70s</button>
-        <button type="button" data-filter="80s" aria-pressed="false">80s</button>
-        <button type="button" data-filter="90s" aria-pressed="false">90s</button>
-      </div>
+<section class="marquee" aria-label="Instagram">
+  <div class="marquee-track" id="marquee"></div>
+</section>
 
-      <div class="grid">
-        <!-- Copy one article per print. Set data-decade and the image URL. -->
-        <article class="item" data-decade="70s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 1]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-        <article class="item" data-decade="80s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 2]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-        <article class="item" data-decade="80s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 3]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-        <article class="item" data-decade="90s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 4]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-        <article class="item" data-decade="70s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 5]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-        <article class="item" data-decade="90s">
-          <div class="cardback"><div class="blister"><div class="art">[Print 6]</div></div><div class="sticker">£[00]</div></div>
-          <h3>[Print title]</h3>
-          <p>[Size, paper, edition]</p>
-        </article>
-      </div>
-    </div>
-  </section>
+<section class="section newsletter">
+  <div class="wrap reveal">
+    <h2 class="h-l">Join the list</h2>
+    <p class="muted">New prints and store updates, straight to your inbox.</p>
+    <form class="inline-form" id="newsForm" novalidate>
+      <label for="newsEmail" class="sr">Email address</label>
+      <input type="email" id="newsEmail" placeholder="Email address" required>
+      <button class="btn" type="submit">Subscribe</button>
+    </form>
+    <p class="form-msg" id="newsMsg" aria-live="polite"></p>
+    <p class="small muted">By subscribing you agree to the <a href="#/privacy" class="ulink">privacy policy</a>.</p>
+  </div>
+</section>
 
-  <section class="about" id="about">
-    <div class="wrap">
-      <div class="art">[Artist photo]</div>
-      <div>
-        <h2>About the artist</h2>
-        <p>[A few lines about who you are and how Lostalgia started.]</p>
-        <p>[What you paint, how you make each piece, and what you hope people feel when they see it.]</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="signup" id="signup">
-    <div class="wrap">
-      <h2>Get new drops first</h2>
-      <p>New prints go out to the mailing list a day before anyone else.</p>
-      <form id="signupForm" novalidate>
-        <label for="email" class="sr-only" style="position:absolute;left:-9999px">Email address</label>
-        <input type="email" id="email" placeholder="Your email address" required>
-        <button type="submit" class="btn">Join the list</button>
-      </form>
-      <p class="msg" id="msg" aria-live="polite"></p>
-    </div>
-  </section>
-</main>
-
-<footer>
+<footer class="footer">
   <div class="wrap">
-    <span>&copy; <span id="year"></span> Lostalgia</span>
-    <span><a href="[instagram link]">Instagram</a> &nbsp; <a href="mailto:[your email]">[your email]</a></span>
+    <div class="footer-grid">
+      <div>
+        <p class="footer-logo">Lostalgia</p>
+        <p style="color:#ccc;margin-top:16px;max-width:36ch">Artwork celebrating the toys and memories of the 70s, 80s and 90s.</p>
+      </div>
+      <div>
+        <h3>Shop</h3>
+        <ul>
+          <li><a href="#/shop" class="ulink">All prints</a></li>
+          <li><a href="#/shop?s=70s" class="ulink">70s</a></li>
+          <li><a href="#/shop?s=80s" class="ulink">80s</a></li>
+          <li><a href="#/shop?s=90s" class="ulink">90s</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Help</h3>
+        <ul>
+          <li><a href="#/about" class="ulink">About</a></li>
+          <li><a href="#/contact" class="ulink">Contact and commissions</a></li>
+          <li><a href="#/delivery" class="ulink">Delivery information</a></li>
+          <li><a href="#/returns" class="ulink">Returns policy</a></li>
+          <li><a href="#/privacy" class="ulink">Privacy policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; <span id="year"></span> Lostalgia</span>
+      <span>Secure payments coming soon</span>
+    </div>
   </div>
 </footer>
 
+<!-- Panels -->
+<div class="overlay" id="overlay"></div>
+
+<aside class="menu" id="menu" aria-label="Menu" aria-hidden="true">
+  <div class="panel-head"><span class="logo">Lostalgia</span><button class="icon-btn" data-close aria-label="Close menu" data-icon="close"></button></div>
+  <nav>
+    <a href="#/">Home</a>
+    <a href="#/shop">Shop</a>
+    <a href="#/about">About</a>
+    <a href="#/contact">Contact</a>
+  </nav>
+</aside>
+
+<aside class="drawer" id="cart" aria-label="Cart" aria-hidden="true">
+  <div class="panel-head"><h2>Your cart</h2><button class="icon-btn" data-close aria-label="Close cart" data-icon="close"></button></div>
+  <div class="cart-body" id="cartBody"></div>
+  <div class="cart-foot" id="cartFoot">
+    <div class="row"><span>Subtotal</span><span id="cartSubtotal">£0.00</span></div>
+    <p class="small muted">Delivery calculated at checkout.</p>
+    <button class="btn block" id="checkoutBtn">Checkout</button>
+    <a href="#/shop" class="cont ulink small" data-close>Continue shopping</a>
+  </div>
+</aside>
+
+<div class="search" id="search" role="dialog" aria-label="Search" aria-hidden="true">
+  <div class="wrap">
+    <div class="search-bar">
+      <label for="searchInput" class="sr">Search prints</label>
+      <input id="searchInput" type="search" placeholder="Search prints" autocomplete="off">
+      <button class="icon-btn" data-close aria-label="Close search" data-icon="close"></button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="modal" id="quickModal" role="dialog" aria-modal="true" aria-label="Quick add" aria-hidden="true">
+  <button class="icon-btn close" data-close aria-label="Close" data-icon="close"></button>
+  <div id="quickBody"></div>
+</div>
+
+<div class="sticky-atc" id="stickyAtc" aria-hidden="true">
+  <div class="wrap">
+    <span class="t" id="stickyTitle"></span>
+    <button class="btn" id="stickyBtn" tabindex="-1">Add to cart</button>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<nav class="bottom-bar" aria-label="Quick links">
+  <div class="inner">
+    <a href="#/"><span data-icon="home"></span>Home</a>
+    <a href="#/shop"><span data-icon="grid"></span>Shop</a>
+    <button data-open="search"><span data-icon="search"></span>Search</button>
+    <button data-open="cart"><span data-icon="bag"></span><span class="count" hidden>0</span>Cart</button>
+  </div>
+</nav>
+
 <script>
-  // Decade filter
-  const buttons = document.querySelectorAll('.filters button');
-  const items = document.querySelectorAll('.item');
-  buttons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      buttons.forEach(b => b.setAttribute('aria-pressed', 'false'));
-      btn.setAttribute('aria-pressed', 'true');
-      const f = btn.dataset.filter;
-      items.forEach(item => { item.hidden = f !== 'all' && item.dataset.decade !== f; });
+/* ===== Settings ===== */
+const CHECKOUT_ENABLED = false;          // Switch to true once a provider is connected
+const CURRENCY = '£';
+const SITE = 'Lostalgia';
+const INSTAGRAM_HANDLE = '@lostalgia';   // [your handle]
+const INSTAGRAM_URL = 'https://instagram.com/[your-handle]';
+const ANNOUNCEMENTS = ['Free UK delivery on all orders', 'Limited editions, printed to order', '[Third message]'];
+
+const SIZES = [{ id: 'a2', label: 'A2 (42 x 60cm)' }];
+const FRAMES = [
+  { id: 'unframed', label: 'Unframed', add: 0 },
+  { id: 'white', label: 'White frame', add: 100 },
+  { id: 'black', label: 'Black frame', add: 100 }
+];
+
+/* Images go in /images named [id]-1.jpg (print), [id]-2.jpg (framed), [id]-3.jpg (detail) */
+const PRODUCTS = [
+  { id: 'lost-001', slug: 'print-one',   title: '[Print title one]',   series: '80s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Two or three sentences about this print, the toy behind it and the memory it brings back.]' },
+  { id: 'lost-002', slug: 'print-two',   title: '[Print title two]',   series: '80s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-003', slug: 'print-three', title: '[Print title three]', series: '90s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-004', slug: 'print-four',  title: '[Print title four]',  series: '90s', price: 250, featured: true,  edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-005', slug: 'print-five',  title: '[Print title five]',  series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-006', slug: 'print-six',   title: '[Print title six]',   series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-007', slug: 'print-seven', title: '[Print title seven]', series: '80s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' },
+  { id: 'lost-008', slug: 'print-eight', title: '[Print title eight]', series: '70s', price: 250, featured: false, edition: 'Limited edition of [100]', description: '[Description]' }
+];
+
+const SERIES_STORY = '[A short paragraph about the series: the decade, the toys it draws on and what ties the prints together.]';
+const FRAME_DETAILS = '[Frame details, for example moulding size, glazing and backing. Unframed prints are posted rolled in a tube.]';
+const DELIVERY_TEXT = '[Delivery times and costs. Estimated delivery [x] to [y] working days.]';
+
+/* ===== Icons ===== */
+const ICONS = {
+  search: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>',
+  bag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg>',
+  instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg>',
+  close: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6 6l12 12M18 6 6 18"/></svg>',
+  menu: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7h18M3 12h18M3 17h18"/></svg>',
+  home: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 10 12 4l8 6v10H4V10Z"/></svg>',
+  grid: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="7" height="7"/><rect x="13" y="4" width="7" height="7"/><rect x="4" y="13" width="7" height="7"/><rect x="13" y="13" width="7" height="7"/></svg>',
+  prev: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m15 5-7 7 7 7"/></svg>',
+  next: '<svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6"><path d="m9 5 7 7-7 7"/></svg>'
+};
+
+/* ===== Helpers ===== */
+const $ = (s, el = document) => el.querySelector(s);
+const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+const money = n => CURRENCY + n.toFixed(2);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const byId = id => PRODUCTS.find(p => p.id === id);
+const bySlug = s => PRODUCTS.find(p => p.slug === s);
+const frameById = id => FRAMES.find(f => f.id === id);
+const sizeById = id => SIZES.find(s => s.id === id);
+const unitPrice = (p, frameId) => p.price + frameById(frameId).add;
+const imgSrc = (p, n) => `images/${p.id}-${n}.jpg`;
+const img = (src, alt, cls = '', eager = false) =>
+  `<img class="${cls}" src="${src}" alt="${esc(alt)}" ${eager ? '' : 'loading="lazy"'} onerror="this.remove()">`;
+const ph = label => `<span class="ph">${esc(label)}<br>Image placeholder</span>`;
+
+function fillIcons(root = document) {
+  $$('[data-icon]', root).forEach(el => { el.innerHTML = ICONS[el.dataset.icon]; });
+  $$('.burger', root).forEach(el => { el.innerHTML = ICONS.menu; });
+}
+
+/* ===== Cart ===== */
+const CART_KEY = 'lostalgia-cart';
+let cart = loadCart();
+
+function loadCart() {
+  try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch (e) { return []; }
+}
+function saveCart() {
+  cart = cart.filter(l => byId(l.id));
+  try { localStorage.setItem(CART_KEY, JSON.stringify(cart)); } catch (e) {}
+  updateCount();
+  renderCart();
+}
+const cartQty = () => cart.reduce((n, l) => n + l.qty, 0);
+const subtotal = () => cart.reduce((n, l) => n + unitPrice(byId(l.id), l.frame) * l.qty, 0);
+
+function addToCart(id, size, frame, qty) {
+  const key = `${id}|${size}|${frame}`;
+  const line = cart.find(l => l.key === key);
+  if (line) line.qty = Math.min(10, line.qty + qty);
+  else cart.push({ key, id, size, frame, qty });
+  saveCart();
+  $$('.count').forEach(c => { c.classList.remove('bump'); void c.offsetWidth; c.classList.add('bump'); });
+  toast('Added to cart');
+  openPanel($('#cart'));
+}
+
+function updateCount() {
+  const n = cartQty();
+  $$('.count').forEach(c => { c.textContent = n; c.hidden = n === 0; });
+}
+
+function lineHTML(l, compact = false) {
+  const p = byId(l.id);
+  const f = frameById(l.frame), s = sizeById(l.size);
+  const controls = compact ? `<p class="small muted">Qty ${l.qty}</p>` : `
+    <div class="line-row">
+      <div class="qty sm">
+        <button data-dec="${l.key}" aria-label="Decrease quantity">&minus;</button>
+        <span>${l.qty}</span>
+        <button data-inc="${l.key}" aria-label="Increase quantity">+</button>
+      </div>
+      <button class="ulink small" data-remove="${l.key}">Remove</button>
+    </div>`;
+  return `<div class="line">
+    <a href="#/product/${p.slug}" class="line-img" data-close>${img(imgSrc(p, 1), p.title)}</a>
+    <div>
+      <a href="#/product/${p.slug}" class="line-title" data-close>${esc(p.title)}</a>
+      <p class="small muted">${s.label} / ${f.label}</p>
+      ${controls}
+    </div>
+    <p>${money(unitPrice(p, l.frame) * l.qty)}</p>
+  </div>`;
+}
+
+function renderCart() {
+  const body = $('#cartBody'), foot = $('#cartFoot');
+  if (!cart.length) {
+    body.innerHTML = `<div class="empty"><p class="h-m">Your cart is empty</p><a href="#/shop" class="btn" data-close>Shop prints</a></div>`;
+    foot.hidden = true;
+    return;
+  }
+  foot.hidden = false;
+  body.innerHTML = cart.map(l => lineHTML(l)).join('');
+  $('#cartSubtotal').textContent = money(subtotal());
+}
+
+/* Checkout hook: connect Shopify, Stripe or another provider here */
+function startCheckout(cartLines) {
+  if (!CHECKOUT_ENABLED) {
+    closePanel(false);
+    location.hash = '#/checkout';
+    return;
+  }
+  // Example later: send cartLines to Shopify Storefront API or a Stripe Checkout Session,
+  // then redirect to the returned checkout URL.
+}
+
+/* ===== Panels (drawer, menu, search, modal) ===== */
+let current = null, lastFocus = null;
+const focusables = el => $$('a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])', el)
+  .filter(x => x.offsetParent !== null || x === document.activeElement);
+
+function openPanel(el) {
+  if (current && current !== el) closePanel(false);
+  if (current === el) return;
+  lastFocus = document.activeElement;
+  el.classList.add('open');
+  el.setAttribute('aria-hidden', 'false');
+  $('#overlay').classList.add('show');
+  document.body.classList.add('locked');
+  current = el;
+  setTimeout(() => {
+    const target = el.id === 'search' ? $('#searchInput') : focusables(el)[0];
+    target && target.focus();
+  }, 60);
+}
+function closePanel(restore = true) {
+  if (!current) return;
+  current.classList.remove('open');
+  current.setAttribute('aria-hidden', 'true');
+  $('#overlay').classList.remove('show');
+  document.body.classList.remove('locked');
+  current = null;
+  if (restore && lastFocus && lastFocus.focus) lastFocus.focus();
+}
+document.addEventListener('keydown', e => {
+  if (!current) return;
+  if (e.key === 'Escape') { closePanel(); return; }
+  if (e.key === 'Tab') {
+    const f = focusables(current);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+});
+
+/* ===== Toast ===== */
+let toastTimer;
+function toast(msg) {
+  const t = $('#toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ===== Cards and pickers ===== */
+function card(p, i = 0) {
+  return `<article class="card reveal" style="--d:${(i % 4) * 0.08}s">
+    <div class="media">
+      <a href="#/product/${p.slug}" class="media-link" aria-label="${esc(p.title)}">
+        ${ph(p.title)}
+        ${img(imgSrc(p, 1), p.title + ' print', 'main')}
+        ${img(imgSrc(p, 2), p.title + ' framed', 'alt')}
+      </a>
+      <button class="quick" data-quick="${p.id}">Quick add</button>
+    </div>
+    <h3><a href="#/product/${p.slug}" class="ulink">${esc(p.title)}</a></h3>
+    <p class="price">From ${money(p.price)}</p>
+  </article>`;
+}
+
+function pickers(prefix) {
+  return `
+    <div class="opt">
+      <p class="opt-label">Size</p>
+      <div class="pills" role="group" aria-label="Size">
+        ${SIZES.map((s, i) => `<button class="pill" data-${prefix}-size="${s.id}" aria-pressed="${i === 0}">${s.label}</button>`).join('')}
+      </div>
+    </div>
+    <div class="opt">
+      <p class="opt-label">Frame</p>
+      <div class="chips" role="group" aria-label="Frame">
+        ${FRAMES.map((f, i) => `<button class="pill" data-${prefix}-frame="${f.id}" aria-pressed="${i === 0}">${f.label}</button>`).join('')}
+      </div>
+    </div>`;
+}
+
+function bindPickers(root, prefix, state, onChange) {
+  ['size', 'frame'].forEach(kind => {
+    $$(`[data-${prefix}-${kind}]`, root).forEach(btn => {
+      btn.addEventListener('click', () => {
+        $$(`[data-${prefix}-${kind}]`, root).forEach(b => b.setAttribute('aria-pressed', 'false'));
+        btn.setAttribute('aria-pressed', 'true');
+        state[kind] = btn.dataset[prefix + kind.charAt(0).toUpperCase() + kind.slice(1)];
+        onChange();
+      });
     });
   });
+}
 
-  // Newsletter form (connect to Mailchimp, Formspree or similar later)
-  document.getElementById('signupForm').addEventListener('submit', e => {
-    e.preventDefault();
-    const email = document.getElementById('email');
-    const msg = document.getElementById('msg');
-    if (!email.value || !email.checkValidity()) {
-      msg.textContent = 'Enter a valid email address to join the list.';
-      email.focus();
-      return;
+/* ===== Quick add ===== */
+function openQuick(id) {
+  const p = byId(id);
+  const state = { size: SIZES[0].id, frame: FRAMES[0].id };
+  const body = $('#quickBody');
+  body.innerHTML = `
+    <p class="small muted">${p.series}</p>
+    <h2 class="h-m" style="margin:6px 0 10px">${esc(p.title)}</h2>
+    <p class="price-big" id="qPrice" style="font-weight:600;margin-bottom:24px">${money(p.price)}</p>
+    ${pickers('q')}
+    <button class="btn block" id="qAdd">Add to cart</button>
+    <p style="margin-top:14px"><a href="#/product/${p.slug}" class="ulink small" data-close>View full details</a></p>`;
+  bindPickers(body, 'q', state, () => { $('#qPrice').textContent = money(unitPrice(p, state.frame)); });
+  $('#qAdd').addEventListener('click', () => addToCart(p.id, state.size, state.frame, 1));
+  openPanel($('#quickModal'));
+}
+
+/* ===== Pages ===== */
+function pageHome() {
+  const featured = PRODUCTS.filter(p => p.featured);
+  return {
+    title: '',
+    html: `
+    <section class="hero">
+      ${ph('Hero artwork')}
+      ${img('images/hero.jpg', 'Latest Lostalgia series', 'bg', true)}
+      <div class="hero-box">
+        <p class="kicker">New series</p>
+        <h1 class="h-xl">[Series name]</h1>
+        <p>[One line about the new series and the toys that inspired it.]</p>
+        <a href="#/shop" class="btn">Shop the collection</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h-l">Latest series</h2>
+          <a href="#/shop" class="ulink">Shop the collection</a>
+        </div>
+        <div class="grid">${featured.map(card).join('')}</div>
+      </div>
+    </section>
+
+    <section class="split">
+      <div class="pic">${ph('Studio or process photo')}${img('images/studio.jpg', 'Inside the Lostalgia studio')}</div>
+      <div class="txt reveal">
+        <h2 class="h-l">Toys we never forgot</h2>
+        <p>[A short paragraph about why Lostalgia exists: the toys, the Saturday mornings and the memories each print brings back.]</p>
+        <a href="#/about" class="btn ghost">Read the story</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <h2 class="h-l">Limited edition prints</h2>
+          <a href="#/shop" class="ulink">Shop all prints</a>
+        </div>
+        <div class="grid">${PRODUCTS.map(card).join('')}</div>
+      </div>
+    </section>`
+  };
+}
+
+function pageShop(query) {
+  const start = new URLSearchParams(query).get('s') || 'all';
+  return {
+    title: 'Shop prints',
+    html: `
+    <section class="wrap">
+      <div class="page-head reveal">
+        <h1 class="h-xl">All prints</h1>
+      </div>
+      <div class="toolbar">
+        <div class="chips" role="group" aria-label="Filter by decade">
+          ${['all', '70s', '80s', '90s'].map(s => `<button class="pill" data-filter="${s}" aria-pressed="${s === start}">${s === 'all' ? 'All' : s}</button>`).join('')}
+        </div>
+        <div class="sort">
+          <label for="sortBy" class="small">Sort by</label>
+          <select id="sortBy">
+            <option value="featured">Featured</option>
+            <option value="low">Price, low to high</option>
+            <option value="high">Price, high to low</option>
+            <option value="az">A to Z</option>
+          </select>
+        </div>
+      </div>
+      <p class="small muted" id="shopCount" style="margin-bottom:24px"></p>
+      <div class="grid" id="shopGrid" style="padding-bottom:96px"></div>
+    </section>`,
+    init() {
+      const state = { filter: start, sort: 'featured' };
+      const draw = () => {
+        let list = PRODUCTS.filter(p => state.filter === 'all' || p.series === state.filter);
+        if (state.sort === 'low') list = [...list].sort((a, b) => a.price - b.price);
+        if (state.sort === 'high') list = [...list].sort((a, b) => b.price - a.price);
+        if (state.sort === 'az') list = [...list].sort((a, b) => a.title.localeCompare(b.title));
+        $('#shopGrid').innerHTML = list.map(card).join('');
+        $('#shopCount').textContent = `${list.length} ${list.length === 1 ? 'print' : 'prints'}`;
+        observeReveal();
+      };
+      $$('[data-filter]').forEach(b => b.addEventListener('click', () => {
+        $$('[data-filter]').forEach(x => x.setAttribute('aria-pressed', 'false'));
+        b.setAttribute('aria-pressed', 'true');
+        state.filter = b.dataset.filter;
+        draw();
+      }));
+      $('#sortBy').addEventListener('change', e => { state.sort = e.target.value; draw(); });
+      draw();
     }
-    msg.textContent = "You're on the list. Thanks for joining!";
-    email.value = '';
-  });
+  };
+}
 
-  document.getElementById('year').textContent = new Date().getFullYear();
+let stickyObs = null;
+function pageProduct(p) {
+  const more = PRODUCTS.filter(x => x.series === p.series && x.id !== p.id).slice(0, 4);
+  const shots = [1, 2, 3];
+  const acc = [
+    ['Description', esc(p.description)],
+    ['About the series', SERIES_STORY],
+    ['Frame details', FRAME_DETAILS],
+    ['Delivery and returns', DELIVERY_TEXT]
+  ];
+  return {
+    title: p.title,
+    html: `
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb"><a href="#/">Home</a> / <a href="#/shop">Prints</a> / ${esc(p.title)}</nav>
+      <section class="pdp">
+        <div>
+          <div class="gallery-main">
+            ${shots.map((n, i) => `<div class="slide ${i === 0 ? 'on' : ''}">${ph(p.title + ' view ' + n)}${img(imgSrc(p, n), `${p.title} view ${n}`, '', i === 0)}</div>`).join('')}
+            <button class="g-arrow prev" aria-label="Previous image">${ICONS.prev}</button>
+            <button class="g-arrow next" aria-label="Next image">${ICONS.next}</button>
+            <span class="g-count" id="gCount">1 / ${shots.length}</span>
+          </div>
+          <div class="thumbs">
+            ${shots.map((n, i) => `<button data-thumb="${i}" aria-label="Show image ${n}" aria-current="${i === 0}">${img(imgSrc(p, n), '')}</button>`).join('')}
+          </div>
+        </div>
+        <div class="info">
+          <h1 class="h-l">${esc(p.title)}</h1>
+          <p class="price-big" id="pPrice">${money(p.price)}</p>
+          <p class="edition">${esc(p.edition)}. Tax included.</p>
+          ${pickers('p')}
+          <p class="opt-label">Quantity</p>
+          <div class="buy">
+            <div class="qty">
+              <button id="qMinus" aria-label="Decrease quantity">&minus;</button>
+              <span id="qVal" aria-live="polite">1</span>
+              <button id="qPlus" aria-label="Increase quantity">+</button>
+            </div>
+            <button class="btn" id="addBtn">Add to cart</button>
+          </div>
+          <ul class="perks">
+            <li>Estimated delivery: [date range]</li>
+            <li><strong>Free delivery</strong> on all UK orders</li>
+          </ul>
+          <div class="acc">
+            ${acc.map(([h, t], i) => `
+              <div class="acc-item">
+                <button class="acc-btn" aria-expanded="${i === 0}" aria-controls="acc${i}">${h}<span class="pm" aria-hidden="true">${i === 0 ? '&minus;' : '+'}</span></button>
+                <div class="acc-panel ${i === 0 ? 'open' : ''}" id="acc${i}"><div><p>${t}</p></div></div>
+              </div>`).join('')}
+          </div>
+        </div>
+      </section>
+    </div>
+    ${more.length ? `
+    <section class="section" style="border-top:1px solid var(--line)">
+      <div class="wrap">
+        <div class="section-head reveal"><h2 class="h-l">More from the ${p.series}</h2><a href="#/shop?s=${p.series}" class="ulink">View all</a></div>
+        <div class="grid">${more.map(card).join('')}</div>
+      </div>
+    </section>` : ''}`,
+    init() {
+      const state = { size: SIZES[0].id, frame: FRAMES[0].id, qty: 1, slide: 0 };
+      const price = () => money(unitPrice(p, state.frame));
+      bindPickers($('.info'), 'p', state, () => { $('#pPrice').textContent = price(); });
+
+      const show = i => {
+        state.slide = (i + shots.length) % shots.length;
+        $$('.gallery-main .slide').forEach((s, n) => s.classList.toggle('on', n === state.slide));
+        $$('[data-thumb]').forEach((t, n) => t.setAttribute('aria-current', n === state.slide));
+        $('#gCount').textContent = `${state.slide + 1} / ${shots.length}`;
+      };
+      $('.g-arrow.prev').addEventListener('click', () => show(state.slide - 1));
+      $('.g-arrow.next').addEventListener('click', () => show(state.slide + 1));
+      $$('[data-thumb]').forEach(t => t.addEventListener('click', () => show(+t.dataset.thumb)));
+
+      const setQty = n => { state.qty = Math.max(1, Math.min(10, n)); $('#qVal').textContent = state.qty; };
+      $('#qMinus').addEventListener('click', () => setQty(state.qty - 1));
+      $('#qPlus').addEventListener('click', () => setQty(state.qty + 1));
+
+      const add = () => addToCart(p.id, state.size, state.frame, state.qty);
+      $('#addBtn').addEventListener('click', add);
+
+      $$('.acc-btn').forEach(btn => btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        $$('.acc-btn').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          $('.pm', b).textContent = '+';
+          $('#' + b.getAttribute('aria-controls')).classList.remove('open');
+        });
+        if (!open) {
+          btn.setAttribute('aria-expanded', 'true');
+          $('.pm', btn).textContent = '\u2212';
+          $('#' + btn.getAttribute('aria-controls')).classList.add('open');
+        }
+      }));
+
+      const bar = $('#stickyAtc');
+      $('#stickyTitle').textContent = p.title;
+      $('#stickyBtn').onclick = add;
+      if ('IntersectionObserver' in window) {
+        stickyObs = new IntersectionObserver(([e]) => {
+          const on = !e.isIntersecting && e.boundingClientRect.top < 0;
+          bar.classList.toggle('show', on);
+          bar.setAttribute('aria-hidden', !on);
+          $('#stickyBtn').tabIndex = on ? 0 : -1;
+        });
+        stickyObs.observe($('#addBtn'));
+      }
+    }
+  };
+}
+
+function pageAbout() {
+  return {
+    title: 'About',
+    html: `
+    <section class="wrap about-hero reveal">
+      <h1 class="h-xl">Made for the kids we used to be</h1>
+      <p>[An opening paragraph introducing the artist behind Lostalgia and what the work is about.]</p>
+    </section>
+    <section class="wrap story">
+      <div class="reveal"><h2>Where it started</h2><p>[A few lines on how Lostalgia began.]</p></div>
+      <div class="reveal" style="--d:.08s"><h2>How each piece is made</h2><p>[A few lines on the process, materials and printing.]</p></div>
+      <div class="reveal" style="--d:.16s"><h2>Why toys</h2><p>[A few lines on why the toys of the 70s, 80s and 90s still matter.]</p></div>
+    </section>
+    <section class="band">${ph('Wide studio image')}${img('images/about-band.jpg', 'Lostalgia prints in the studio')}</section>`
+  };
+}
+
+function pageContact() {
+  return {
+    title: 'Contact and commissions',
+    html: `
+    <section class="wrap" style="padding-bottom:96px">
+      <div class="page-head reveal">
+        <h1 class="h-xl">Get in touch</h1>
+        <p class="muted" style="margin-top:20px;max-width:52ch">Questions about an order, or interested in a commission? Send a message and we'll reply within [2] working days.</p>
+      </div>
+      <form class="form" id="contactForm" novalidate>
+        <div class="two">
+          <div><label for="cName">Name</label><input id="cName" required></div>
+          <div><label for="cEmail">Email</label><input id="cEmail" type="email" required></div>
+        </div>
+        <div><label for="cSubject">Subject</label>
+          <select id="cSubject"><option>Order question</option><option>Commission</option><option>Something else</option></select>
+        </div>
+        <div><label for="cMsg">Message</label><textarea id="cMsg" required></textarea></div>
+        <div><button class="btn" type="submit">Send message</button></div>
+        <p class="form-msg" id="contactMsg" aria-live="polite"></p>
+      </form>
+    </section>`,
+    init() {
+      $('#contactForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const ok = ['#cName', '#cEmail', '#cMsg'].every(s => $(s).value.trim()) && $('#cEmail').checkValidity();
+        $('#contactMsg').textContent = ok ? 'Message sent. Thanks for getting in touch.' : 'Fill in your name, a valid email and a message to send.';
+        if (ok) e.target.reset();
+      });
+    }
+  };
+}
+
+function pagePolicy(title) {
+  return {
+    title,
+    html: `
+    <section class="wrap" style="padding-bottom:96px">
+      <div class="page-head"><h1 class="h-l">${title}</h1></div>
+      <div class="prose">
+        <p>[Policy text goes here.]</p>
+        <p>[Add each section as its own paragraph.]</p>
+      </div>
+    </section>`
+  };
+}
+
+function pageCheckout() {
+  const hasItems = cart.length > 0;
+  return {
+    title: 'Checkout',
+    html: `
+    <section class="wrap checkout">
+      <div>
+        <div class="notice" role="status">
+          <h1 class="h-m">Checkout opens soon</h1>
+          <p>We're setting up secure payments. Leave your email and we'll let you know the moment prints are available to order.</p>
+          <form class="inline-form" id="notifyForm" novalidate>
+            <label for="notifyEmail" class="sr">Email address</label>
+            <input type="email" id="notifyEmail" placeholder="Email address" required>
+            <button class="btn ghost" type="submit">Notify me</button>
+          </form>
+          <p class="form-msg" id="notifyMsg" aria-live="polite"></p>
+        </div>
+
+        <fieldset disabled>
+          <legend>Contact</legend>
+          <div class="form"><div><label for="coEmail">Email</label><input id="coEmail" type="email"></div></div>
+        </fieldset>
+        <fieldset disabled>
+          <legend>Delivery</legend>
+          <div class="form">
+            <div class="two">
+              <div><label for="coFirst">First name</label><input id="coFirst"></div>
+              <div><label for="coLast">Last name</label><input id="coLast"></div>
+            </div>
+            <div><label for="coAddr">Address</label><input id="coAddr"></div>
+            <div class="two">
+              <div><label for="coCity">Town or city</label><input id="coCity"></div>
+              <div><label for="coPost">Postcode</label><input id="coPost"></div>
+            </div>
+            <div><label for="coCountry">Country</label><select id="coCountry"><option>United Kingdom</option></select></div>
+          </div>
+        </fieldset>
+        <fieldset disabled>
+          <legend>Payment</legend>
+          <div class="form">
+            <div><label for="coCard">Card number</label><input id="coCard"></div>
+            <div class="two">
+              <div><label for="coExp">Expiry</label><input id="coExp"></div>
+              <div><label for="coCvc">Security code</label><input id="coCvc"></div>
+            </div>
+          </div>
+        </fieldset>
+        <button class="btn block" disabled aria-disabled="true">Checkout unavailable</button>
+      </div>
+
+      <aside class="summary" aria-label="Order summary">
+        <h2 style="font-size:20px;font-weight:700;margin-bottom:8px">Order summary</h2>
+        ${hasItems ? cart.map(l => lineHTML(l, true)).join('') : '<p class="muted" style="margin-top:12px">Your cart is empty.</p>'}
+        <div class="row"><span>Subtotal</span><span>${money(subtotal())}</span></div>
+        <div class="row"><span>Delivery</span><span class="muted">Calculated at checkout</span></div>
+        <div class="row total"><span>Total</span><span>${money(subtotal())}</span></div>
+        ${hasItems ? '' : '<a href="#/shop" class="btn block" style="margin-top:24px">Shop prints</a>'}
+      </aside>
+    </section>`,
+    init() {
+      $('#notifyForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const input = $('#notifyEmail');
+        const ok = input.value && input.checkValidity();
+        $('#notifyMsg').textContent = ok ? "Thanks. We'll email you when checkout opens." : 'Enter a valid email address.';
+        if (ok) input.value = '';
+      });
+    }
+  };
+}
+
+function pageNotFound() {
+  return {
+    title: 'Page not found',
+    html: `<section class="wrap" style="padding:120px var(--gutter) 96px;text-align:center">
+      <h1 class="h-xl">Page not found</h1>
+      <p class="muted" style="margin:20px 0 32px">This page doesn't exist or has moved.</p>
+      <a href="#/shop" class="btn">Shop prints</a></section>`
+  };
+}
+
+/* ===== Router ===== */
+const ROUTES = {
+  '': pageHome,
+  shop: pageShop,
+  about: pageAbout,
+  contact: pageContact,
+  delivery: () => pagePolicy('Delivery information'),
+  returns: () => pagePolicy('Returns policy'),
+  privacy: () => pagePolicy('Privacy policy'),
+  checkout: pageCheckout
+};
+let firstLoad = true;
+
+function router() {
+  const raw = location.hash.replace(/^#\/?/, '');
+  const [path, query = ''] = raw.split('?');
+  const [page, param] = path.split('/');
+
+  closePanel(false);
+  if (stickyObs) { stickyObs.disconnect(); stickyObs = null; }
+  $('#stickyAtc').classList.remove('show');
+
+  let view;
+  if (page === 'product') {
+    const p = bySlug(param);
+    view = p ? pageProduct(p) : pageNotFound();
+  } else if (ROUTES[page] !== undefined) {
+    view = ROUTES[page](query);
+  } else {
+    view = pageNotFound();
+  }
+
+  $('#app').innerHTML = view.html;
+  document.title = view.title ? `${view.title} | ${SITE}` : `${SITE} | Nostalgic Toy Art Prints`;
+  $$('[data-nav]').forEach(a => a.toggleAttribute('aria-current', a.dataset.nav === page) || a.setAttribute('aria-current', 'page'));
+  $$('[data-nav]').forEach(a => { if (a.dataset.nav !== page) a.removeAttribute('aria-current'); });
+  view.init && view.init();
+  observeReveal();
+
+  if (!firstLoad) { window.scrollTo(0, 0); $('#main').focus({ preventScroll: true }); }
+  firstLoad = false;
+}
+
+/* ===== Scroll reveal ===== */
+let revealObs;
+function observeReveal() {
+  if (!('IntersectionObserver' in window)) { $$('.reveal').forEach(e => e.classList.add('in')); return; }
+  if (!revealObs) {
+    revealObs = new IntersectionObserver(entries => entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); revealObs.unobserve(e.target); }
+    }), { rootMargin: '0px 0px -8% 0px' });
+  }
+  $$('.reveal:not(.in)').forEach(e => revealObs.observe(e));
+}
+
+/* ===== Header hide on scroll ===== */
+let lastY = 0;
+addEventListener('scroll', () => {
+  const y = scrollY;
+  $('#header').classList.toggle('hide', y > 80 && y > lastY && !current);
+  lastY = y;
+}, { passive: true });
+
+/* ===== Announcement rotation ===== */
+let aIndex = 0;
+setInterval(() => {
+  if (ANNOUNCEMENTS.length < 2) return;
+  const el = $('#announceText');
+  el.style.opacity = 0;
+  setTimeout(() => { aIndex = (aIndex + 1) % ANNOUNCEMENTS.length; el.textContent = ANNOUNCEMENTS[aIndex]; el.style.opacity = 1; }, 400);
+}, 5000);
+
+/* ===== Search ===== */
+$('#searchInput').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  const list = q ? PRODUCTS.filter(p => (p.title + ' ' + p.series).toLowerCase().includes(q)) : [];
+  $('#searchResults').innerHTML = q
+    ? (list.length ? list.map(card).join('') : `<p class="muted">No prints match "${esc(q)}". Try a decade like 80s.</p>`)
+    : '';
+  $$('#searchResults .reveal').forEach(el => el.classList.add('in'));
+});
+
+/* ===== Global clicks ===== */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button, a');
+  if (!t) { if (e.target.id === 'overlay') closePanel(); return; }
+  if (t.dataset.open === 'cart') openPanel($('#cart'));
+  else if (t.dataset.open === 'menu') openPanel($('#menu'));
+  else if (t.dataset.open === 'search') openPanel($('#search'));
+  else if (t.hasAttribute('data-close') && t.tagName === 'BUTTON') closePanel();
+  else if (t.hasAttribute('data-close') || t.closest('#menu nav') || t.closest('#searchResults a')) closePanel(false);
+  if (t.dataset.quick) { e.preventDefault(); openQuick(t.dataset.quick); }
+  const key = t.dataset.inc || t.dataset.dec || t.dataset.remove;
+  if (key) {
+    const line = cart.find(l => l.key === key);
+    if (!line) return;
+    if (t.dataset.inc) line.qty = Math.min(10, line.qty + 1);
+    if (t.dataset.dec) line.qty = Math.max(1, line.qty - 1);
+    if (t.dataset.remove) cart = cart.filter(l => l.key !== key);
+    saveCart();
+  }
+});
+$('#overlay').addEventListener('click', () => closePanel());
+$('#checkoutBtn').addEventListener('click', () => startCheckout(cart));
+
+/* ===== Newsletter ===== */
+$('#newsForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const input = $('#newsEmail');
+  const ok = input.value && input.checkValidity();
+  $('#newsMsg').textContent = ok ? "You're on the list. Thanks for subscribing." : 'Enter a valid email address to subscribe.';
+  if (ok) input.value = '';
+});
+
+/* ===== Start ===== */
+$('#igLink').href = INSTAGRAM_URL;
+$('#marquee').innerHTML = Array(8).fill(`<a href="${INSTAGRAM_URL}" target="_blank" rel="noopener">${INSTAGRAM_HANDLE}</a>`).join('');
+$('#year').textContent = new Date().getFullYear();
+$('#announceText').textContent = ANNOUNCEMENTS[0];
+fillIcons();
+updateCount();
+renderCart();
+addEventListener('hashchange', router);
+router();
 </script>
 </body>
 </html>
